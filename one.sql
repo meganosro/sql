@@ -35,3 +35,9 @@ SELECT [custid]
 FROM [TSQLFundamentals2008].[Sales].[Customers]
 ORDER BY case  WHEN region IS null THEN 2 ELSE 1 END
 --order query
+
+
+grant(dcl)
+
+CREATE USER 'mega'@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'mega'@localhost;
