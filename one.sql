@@ -41,3 +41,20 @@ grant(dcl)
 
 CREATE USER 'mega'@localhost IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'mega'@localhost;
+
+
+
+--trigger
+delimiter //
+CREATE TRIGGER XeronClientsTrigger BEFORE UPDATE ON XeronClients
+FOR EACH
+ROW
+BEGIN
+	IF NEW.dCashBalance > 20 THEN
+		SET NEW.dCashBalance = 0;
+	END IF;
+
+   -- UPDATE XeronClients SET dCashBalance=10.0 WHERE iID = ;
+END;
+//
+delimiter ;
